@@ -31,4 +31,11 @@
     <ProjectReference Include="..\Hans.UserSample.Infrastructure\Hans.UserSample.Infrastructure.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <None Update="Hans.UserSample.Web.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
