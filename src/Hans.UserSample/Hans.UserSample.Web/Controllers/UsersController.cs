@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hans.UserSample.Core.Entities;
+using Hans.UserSample.Core.Interfaces;
+using Hans.UserSample.Web.Helpers;
+using Hans.UserSample.Web.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,10 +13,28 @@ namespace Hans.UserSample.Web.Controllers
 {
     public class UsersController : Controller
     {
-        // GET: Users
-        public ActionResult Index()
+        private readonly IRepository<User> repository;
+
+        public UsersController(IRepository<User> repository)
         {
-            return View();
+            this.repository = repository;
+        }
+
+        // GET: Users
+        public async Task<IActionResult> Index(int? page, string sort = "username", bool asc = true, string query = "")
+        {
+            var count = await repository.CountAsync();
+
+            var model = new UserModel();
+            model.PageSize = int.Parse("10");
+            model.TotalPages = (int)Math.Ceiling((double)count / model.PageSize);
+            model.CurrentPage = page ?? 1;
+            model.PageIndex = model.PageSize * (model.CurrentPage - 1);
+            model.Sort = sort;
+            model.IsAsc = asc;
+            model.Users = await repository.SkipAndTakeAsync((model.CurrentPage - 1) * model.PageSize, model.PageSize);
+
+            return View(model);
         }
 
         // GET: Users/Details/5

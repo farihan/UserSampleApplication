@@ -1,9 +1,50 @@
-﻿
+﻿@using Hans.UserSample.Web.Helpers
+@model Hans.UserSample.Web.Models.UserModel
+
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>Manage User(s)</h1>
 
-<p></p>
+<div class="pb-3 clearfix"></div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Username</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Role</th>
+            <th scope="col">Phone</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Users)
+        {
+            Model.PageIndex++;
+        <tr>
+            <td>@Model.PageIndex</td>
+            <td>@item.Username</td>
+            <td>@item.FirstName</td>
+            <td>@item.LastName</td>
+            <td>@item.Role</td>
+            <td>@item.Phone</td>
+            <td>
+                @Html.ActionLink("Details", "Details", "Users", null, new { @class = "btn btn-sm btn-info" })
+                @Html.ActionLink("Edit", "Edit", "Users", null, new { @class = "btn btn-sm btn-primary" })
+                @Html.ActionLink("Delete", "Delete", "Users", null, new { @class = "btn btn-sm btn-danger" })
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+@Html.PageLinks(Model.PageSize, Model.TotalPages, Model.CurrentPage, ViewBag.CurrentQuery as string)
+
+<div class="pb-3 clearfix"></div>
+
+@Html.ActionLink("Create New", "Create", "Product", null, new { @class = "btn btn-sm btn-primary" })
 

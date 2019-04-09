@@ -52,5 +52,14 @@ namespace Hans.UserSample.Infrastructure.Data
         {
             return _context.Set<TModel>().AsNoTracking().FirstOrDefaultAsync(match);
         }
+        public async Task<int> CountAsync()
+        {
+            return await _context.Set<TModel>().CountAsync();
+        }
+
+        public async Task<IList<TModel>> SkipAndTakeAsync(int skipCount, int takeCount)
+        {
+            return await _context.Set<TModel>().AsNoTracking().Skip(skipCount).Take(takeCount).ToListAsync();
+        }
     }
 }

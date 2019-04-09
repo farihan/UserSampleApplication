@@ -15,5 +15,8 @@ namespace Hans.UserSample.Core.Interfaces
         Task<IList<TModel>> FindAllAsync();
         Task<IList<TModel>> FindAllByAsync(Expression<Func<TModel, bool>> match);
         Task<TModel> FindOneByAsync(Expression<Func<TModel, bool>> match);
+
+        Task<int> CountAsync();
+        Task<IList<TModel>> SkipAndTakeAsync(int skipCount, int takeCount);
     }
 }
