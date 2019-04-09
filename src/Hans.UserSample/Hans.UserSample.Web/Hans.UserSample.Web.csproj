@@ -4,11 +4,12 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <UserSecretsId>a316d67d-37c0-4c66-9534-04bcaacea6cf</UserSecretsId>
-    <StartupObject>Hans.UserSample.Web.Program</StartupObject>
+    <StartupObject></StartupObject>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\WS\Samples\Hans.UserSample\Hans.UserSample.Web\Hans.UserSample.Web.xml</DocumentationFile>
+    <DocumentationFile>G:\Git\UserSampleApplication\src\Hans.UserSample\Hans.UserSample.Web\Hans.UserSample.Web.xml</DocumentationFile>
+    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
   </PropertyGroup>
 
 
