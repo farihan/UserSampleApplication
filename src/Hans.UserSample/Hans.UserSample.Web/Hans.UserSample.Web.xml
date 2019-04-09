@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Hans.UserSample.Web</name>
+    </assembly>
+    <members>
+        <member name="M:Hans.UserSample.Web.Controllers.UsersApiController.GetAll">
+            <summary>
+            Retrieves users
+            </summary>
+            <returns>A response with user list</returns>
+            <response code="200">Returns the user list</response>
+            <response code="500">If there was an internal server error</response>
+        </member>
+        <member name="M:Hans.UserSample.Web.Controllers.UsersApiController.GetById(System.Guid)">
+            <summary>
+            Retrieves a user by ID
+            </summary>
+            <param name="id">User id</param>
+            <returns>A response with a user</returns>
+            <response code="200">Returns the user</response>
+            <response code="404">If users is not exists</response>
+            <response code="500">If there was an internal server error</response>
+        </member>
+        <member name="M:Hans.UserSample.Web.Controllers.UsersApiController.Delete(System.Guid)">
+            <summary>
+            Deletes an existing user
+            </summary>
+            <param name="id">User ID</param>
+            <returns>A response as delete user result</returns>
+            <response code="200">If user deleted successfully</response>
+            <response code="404">If users is not exists</response>
+            <response code="500">If there was an internal server error</response>
+        </member>
+        <member name="M:Hans.UserSample.Web.Controllers.UsersApiController.Post(Hans.UserSample.Core.Entities.User)">
+            <summary>
+            Creates a new user
+            </summary>
+            <param name="model">Request model</param>
+            <returns>A response with new user</returns>
+            <response code="201">A response as creation of user</response>
+            <response code="400">For bad request</response>
+            <response code="500">If there was an internal server error</response>
+        </member>
+        <member name="M:Hans.UserSample.Web.Controllers.UsersApiController.Put(System.Guid,Hans.UserSample.Core.Entities.User)">
+            <summary>
+            Updates an existing user
+            </summary>
+            <param name="id">User ID</param>
+            <param name="model">Request model</param>
+            <returns>A response as update user result</returns>
+            <response code="200">If user updated successfully</response>
+            <response code="400">For bad request</response>
+            <response code="404">If user is not exists</response>
+            <response code="500">If there was an internal server error</response>
+        </member>
+    </members>
+</doc>
