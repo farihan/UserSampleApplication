@@ -38,7 +38,7 @@ namespace Hans.UserSample.Web
             });
 
             services.AddDbContext<UserSampleDBContext>(options => 
-                options.UseSqlServer(Configuration["ConnectionStrings:Default"])
+                options.UseSqlServer(Configuration["Default"])
             );
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
