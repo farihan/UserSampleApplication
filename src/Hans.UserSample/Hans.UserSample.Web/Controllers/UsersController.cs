@@ -92,9 +92,17 @@ namespace Hans.UserSample.Web.Controllers
         }
 
         // GET: Users/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(Guid? id)
         {
-            return View();
+            if (!id.HasValue)
+                return NotFound();
+
+            var user = await repository.FindOneByAsync(p => p.Id == id.Value);
+
+            if (user == null)
+                return NotFound();
+
+            return View(user);
         }
 
         // POST: Users/Edit/5
@@ -115,9 +123,17 @@ namespace Hans.UserSample.Web.Controllers
         }
 
         // GET: Users/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(Guid? id)
         {
-            return View();
+            if (!id.HasValue)
+                return NotFound();
+
+            var user = await repository.FindOneByAsync(p => p.Id == id.Value);
+
+            if (user == null)
+                return NotFound();
+
+            return View(user);
         }
 
         // POST: Users/Delete/5
