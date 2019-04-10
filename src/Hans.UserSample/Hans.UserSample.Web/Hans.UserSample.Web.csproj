@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>G:\Git\UserSampleApplication\src\Hans.UserSample\Hans.UserSample.Web\Hans.UserSample.Web.xml</DocumentationFile>
+    <DocumentationFile>C:\WS\Repo\UserSampleApplication\src\Hans.UserSample\Hans.UserSample.Web\Hans.UserSample.Web.xml</DocumentationFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
 
