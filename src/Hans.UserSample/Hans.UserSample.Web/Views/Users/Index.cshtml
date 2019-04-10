@@ -1,5 +1,5 @@
 ﻿@using Hans.UserSample.Web.Helpers
-@model Hans.UserSample.Web.Models.UserModel
+@model Hans.UserSample.Web.Models.UserListModel
 
 @{
     ViewData["Title"] = "Index";
@@ -33,9 +33,9 @@
             <td>@item.Role</td>
             <td>@item.Phone</td>
             <td>
-                @Html.ActionLink("Details", "Details", "Users", null, new { @class = "btn btn-sm btn-info" })
-                @Html.ActionLink("Edit", "Edit", "Users", null, new { @class = "btn btn-sm btn-primary" })
-                @Html.ActionLink("Delete", "Delete", "Users", null, new { @class = "btn btn-sm btn-danger" })
+                @Html.ActionLink("Details", "Details", new { id = item.Id })
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-sm btn-primary" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-sm btn-danger" })
             </td>
         </tr>
         }
@@ -46,5 +46,5 @@
 
 <div class="pb-3 clearfix"></div>
 
-@Html.ActionLink("Create New", "Create", "Product", null, new { @class = "btn btn-sm btn-primary" })
+@Html.ActionLink("Create New", "Create", "User", null, new { @class = "btn btn-sm btn-primary" })
 

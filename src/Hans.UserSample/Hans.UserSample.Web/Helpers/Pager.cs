@@ -14,7 +14,9 @@ namespace Hans.UserSample.Web.Helpers
         public static HtmlString PageLinks(this IHtmlHelper helper, int pageSize, int totalPages, int currentPage, string currentQuery)
         {
             var s = string.Empty;
-            var controllerName = helper.ViewContext.RouteData.Values["controller"].ToString();
+            var controller = helper.ViewContext.RouteData.Values["controller"].ToString();
+            var action = helper.ViewContext.RouteData.Values["action"].ToString();
+            var controllerName = string.Format(@"{0}/{1}", controller, action);
             var maxPages = 11;
 
             if (totalPages <= maxPages)

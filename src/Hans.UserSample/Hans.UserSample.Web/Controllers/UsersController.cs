@@ -25,7 +25,24 @@ namespace Hans.UserSample.Web.Controllers
         {
             var count = await repository.CountAsync();
 
-            var model = new UserModel();
+            var model = new UserListModel();
+            model.PageSize = int.Parse("10");
+            model.TotalPages = (int)Math.Ceiling((double)count / model.PageSize);
+            model.CurrentPage = page ?? 1;
+            model.PageIndex = model.PageSize * (model.CurrentPage - 1);
+            model.Sort = sort;
+            model.IsAsc = asc;
+            model.Users = await repository.SkipAndTakeAsync((model.CurrentPage - 1) * model.PageSize, model.PageSize);
+
+            return View(model);
+        }
+
+        // GET: Users
+        public async Task<IActionResult> List(int? page, string sort = "username", bool asc = true, string query = "")
+        {
+            var count = await repository.CountAsync();
+
+            var model = new UserListModel();
             model.PageSize = int.Parse("10");
             model.TotalPages = (int)Math.Ceiling((double)count / model.PageSize);
             model.CurrentPage = page ?? 1;
@@ -38,9 +55,17 @@ namespace Hans.UserSample.Web.Controllers
         }
 
         // GET: Users/Details/5
-        public ActionResult Details(int id)
+        public async Task<IActionResult> Details(Guid? id)
         {
-            return View();
+            if (!id.HasValue)
+                return NotFound();
+
+            var user = await repository.FindOneByAsync(p => p.Id == id.Value);
+
+            if (user == null)
+                return NotFound();
+
+            return View(user);
         }
 
         // GET: Users/Create
