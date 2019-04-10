@@ -30,7 +30,6 @@ namespace Hans.UserSample.Core.Entities
 
         [Display(Name = "Phone")]
         [DataType(DataType.PhoneNumber)]
-        [Required(ErrorMessage = "The field is required")]
         public string Phone { get; set; }
     }
 }

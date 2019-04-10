@@ -65,4 +65,4 @@
 
 @Html.PageLinks(Model.PageSize, Model.TotalPages, Model.CurrentPage, ViewBag.CurrentQuery as string)
 
-@Html.ActionLink("Create New", "Create", "User", null, new { @class = "btn btn-sm btn-primary" })
+<a asp-action="Create" class="btn btn-sm btn-primary">Create</a>
